@@ -13,8 +13,9 @@ module.exports = (latitude, longitude, callback) => {
 		} else {
 			// Nothing went wrong
 			const { temperature, precipProbability } = body.currently;
+			const { temperatureHigh, temperatureLow } = body.daily.data[0];
 
-			const response = `${body.daily.data[0].summary} It is currently ${temperature} degrees out. There is a ${precipProbability}% chance of rain.`;
+			const response = `${body.daily.data[0].summary} It is currently ${temperature} degrees out. There is a ${precipProbability}% chance of rain with the highest temperature of ${temperatureHigh} and lowest temperature of ${temperatureLow}.`;
 
 			callback(undefined, response);
 		}
